@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Red Dragon Studios</title>
+
+<link rel="icon" href="https://github.com/redragonstudio/reddragonstudio/blob/main/Untitled%20design.png?raw=true">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+
+background:black;
+color:white;
+overflow-x:hidden;
+
+background-image:url("https://raw.githubusercontent.com/redragonstudio/reddragonstudio/82af79797677a7f3aa08421423d3ec6cdc8bb2b2/reddragon.png");
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
+
+}
+
+/* red ambience */
+
+body::after{
+content:"";
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:radial-gradient(circle at center, rgba(255,0,0,0.08), black 70%);
+pointer-events:none;
+z-index:-1;
+}
+
+/* intro screen */
+
+#intro{
+
+position:fixed;
+width:100%;
+height:100%;
+background:black;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+z-index:9999;
+
+}
+
+#dragon{
+
+width:260px;
+animation:glitch 1s infinite;
+}
+
+@keyframes glitch{
+
+0%{transform:translate(0)}
+20%{transform:translate(-3px,3px)}
+40%{transform:translate(3px,-3px)}
+60%{transform:translate(-3px,3px)}
+80%{transform:translate(3px,3px)}
+100%{transform:translate(0)}
+
+}
+
+.enter{
+
+margin-top:25px;
+padding:10px 28px;
+background:#ff0000;
+border:none;
+color:white;
+cursor:pointer;
+font-size:16px;
+border-radius:4px;
+transition:0.3s;
+
+}
+
+.enter:hover{
+
+box-shadow:0 0 20px red;
+transform:scale(1.05);
+
+}
+
+/* header */
+
+header{
+
+padding:40px;
+text-align:center;
+
+}
+
+h1{
+
+font-size:50px;
+letter-spacing:2px;
+
+}
+
+.tagline{
+
+opacity:0.8;
+margin-top:10px;
+
+}
+
+/* section */
+
+.section{
+
+max-width:1100px;
+margin:auto;
+padding:60px 20px;
+
+}
+
+/* video grid */
+
+.video-grid{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:30px;
+
+}
+
+.video iframe{
+
+width:100%;
+height:200px;
+border:none;
+border-radius:8px;
+box-shadow:0 0 20px rgba(255,0,0,0.3);
+
+}
+
+/* social icons */
+
+.social{
+
+text-align:center;
+margin-top:40px;
+
+}
+
+.social a{
+
+margin:15px;
+font-size:28px;
+color:white;
+transition:0.3s;
+
+}
+
+.social a:hover{
+
+color:red;
+text-shadow:0 0 10px red;
+
+}
+
+/* mouse glow */
+
+.cursor{
+
+position:fixed;
+width:200px;
+height:200px;
+background:radial-gradient(circle,rgba(255,0,0,0.3),transparent 60%);
+pointer-events:none;
+transform:translate(-50%,-50%);
+mix-blend-mode:screen;
+z-index:999;
+
+}
+
+footer{
+
+text-align:center;
+padding:40px;
+opacity:0.6;
+font-size:14px;
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="cursor"></div>
+
+<!-- intro screen -->
+
+<div id="intro">
+
+<img id="dragon" src="https://github.com/redragonstudio/reddragonstudio/blob/main/Untitled%20design.png?raw=true">
+
+<button class="enter" onclick="enterSite()">ENTER</button>
+
+</div>
+
+<!-- background music -->
+
+<audio id="bgmusic" loop>
+
+<source src="https://raw.githubusercontent.com/redragonstudio/reddragonstudio/82af79797677a7f3aa08421423d3ec6cdc8bb2b2/soundpromusic-professional-471533.mp3">
+
+</audio>
+
+<audio id="roar">
+
+<source src="https://raw.githubusercontent.com/redragonstudio/reddragonstudio/main/Dragon%20Roar%20(mp3cut.net).mp3">
+
+</audio>
+
+<header>
+
+<h1>Red Dragon Studios</h1>
+
+<p class="tagline">
+A small collaborative music project exploring covers, instrumentals, remixes and creative production.
+</p>
+
+</header>
+
+<section class="section">
+
+<h2 style="margin-bottom:25px;">Featured</h2>
+
+<div class="video-grid">
+
+<div class="video">
+
+<iframe class="yt"
+src="https://www.youtube.com/embed/dELunDYhduc"
+allowfullscreen></iframe>
+
+</div>
+
+<div class="video">
+
+<iframe class="yt"
+src="https://www.youtube.com/embed/TvxAO1LattI"
+allowfullscreen></iframe>
+
+</div>
+
+<div class="video">
+
+<iframe class="yt"
+src="https://www.youtube.com/embed/5xEMmnEy3CA"
+allowfullscreen></iframe>
+
+</div>
+
+</div>
+
+<div class="social">
+
+<a href="https://www.youtube.com/@RedDragonStudio-69" target="_blank">
+
+<img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" width="40">
+
+</a>
+
+<a href="https://www.instagram.com/redd.ragon_studio?igsh=MmZhbXc4b3Yzbm9j" target="_blank">
+
+<img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" width="40">
+
+</a>
+
+</div>
+
+</section>
+
+<footer>
+
+Red Dragon Studios
+
+</footer>
+
+<script>
+
+/* intro */
+
+function enterSite(){
+
+document.getElementById("intro").style.display="none"
+
+document.getElementById("bgmusic").play()
+
+document.getElementById("roar").play()
+
+}
+
+/* mouse glow */
+
+const cursor=document.querySelector(".cursor")
+
+document.addEventListener("mousemove",e=>{
+
+cursor.style.left=e.clientX+"px"
+cursor.style.top=e.clientY+"px"
+
+})
+
+/* auto mute when video plays */
+
+let bg=document.getElementById("bgmusic")
+
+document.querySelectorAll("iframe").forEach(frame=>{
+
+frame.addEventListener("mouseenter",()=>{
+
+bg.volume=0.1
+
+})
+
+frame.addEventListener("mouseleave",()=>{
+
+bg.volume=1
+
+})
+
+})
+
+</script>
+
+</body>
+</html>
