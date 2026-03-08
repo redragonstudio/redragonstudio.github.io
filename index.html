@@ -1,14 +1,16 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Red Dragon Studios</title>
 
-<link rel="icon" href="https://github.com/redragonstudio/reddragonstudio/blob/main/Untitled%20design.png?raw=true">
+<link rel="icon" href="https://raw.githubusercontent.com/redragonstudio/reddragonstudio/main/Untitled%20design.png">
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
 
@@ -17,209 +19,239 @@ margin:0;
 padding:0;
 box-sizing:border-box;
 font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
 }
 
 body{
-
-background:black;
+background:#000;
 color:white;
 overflow-x:hidden;
-
-background-image:url("https://raw.githubusercontent.com/redragonstudio/reddragonstudio/82af79797677a7f3aa08421423d3ec6cdc8bb2b2/reddragon.png");
-background-size:cover;
-background-position:center;
-background-attachment:fixed;
-
 }
 
-/* red ambience */
+/* background */
 
-body::after{
-content:"";
+.bg{
 position:fixed;
 top:0;
 left:0;
 width:100%;
 height:100%;
-background:radial-gradient(circle at center, rgba(255,0,0,0.08), black 70%);
-pointer-events:none;
+background:url("https://raw.githubusercontent.com/redragonstudio/reddragonstudio/82af79797677a7f3aa08421423d3ec6cdc8bb2b2/reddragon.png") center/cover;
+z-index:-2;
+filter:brightness(.35);
+}
+
+.overlay{
+position:fixed;
+width:100%;
+height:100%;
+background:radial-gradient(circle at center, rgba(255,0,0,.12), transparent 70%);
 z-index:-1;
 }
 
-/* intro screen */
+/* cursor glow */
+
+.cursor{
+position:fixed;
+width:80px;
+height:80px;
+border-radius:50%;
+background:radial-gradient(circle, rgba(255,0,0,.4), transparent 70%);
+pointer-events:none;
+transform:translate(-50%,-50%);
+z-index:999;
+mix-blend-mode:screen;
+}
+
+/* intro */
 
 #intro{
-
 position:fixed;
 width:100%;
 height:100%;
 background:black;
 display:flex;
-justify-content:center;
-align-items:center;
 flex-direction:column;
+align-items:center;
+justify-content:center;
 z-index:9999;
-
+transition:opacity 1s;
 }
 
 #dragon{
-
-width:260px;
-animation:glitch 1s infinite;
+width:220px;
+animation:fade 2s ease;
 }
 
-@keyframes glitch{
-
-0%{transform:translate(0)}
-20%{transform:translate(-3px,3px)}
-40%{transform:translate(3px,-3px)}
-60%{transform:translate(-3px,3px)}
-80%{transform:translate(3px,3px)}
-100%{transform:translate(0)}
-
+@keyframes fade{
+0%{opacity:0; transform:scale(.7)}
+100%{opacity:1; transform:scale(1)}
 }
 
-.enter{
-
-margin-top:25px;
-padding:10px 28px;
+.enterBtn{
+margin-top:30px;
+padding:12px 35px;
 background:#ff0000;
 border:none;
+border-radius:6px;
+font-size:16px;
 color:white;
 cursor:pointer;
-font-size:16px;
-border-radius:4px;
-transition:0.3s;
-
+transition:.3s;
 }
 
-.enter:hover{
-
+.enterBtn:hover{
 box-shadow:0 0 20px red;
 transform:scale(1.05);
-
 }
 
-/* header */
+/* hero */
 
-header{
-
-padding:40px;
+.hero{
 text-align:center;
-
+padding:120px 20px 80px;
 }
 
-h1{
-
-font-size:50px;
+.hero h1{
+font-size:60px;
 letter-spacing:2px;
-
 }
 
 .tagline{
-
-opacity:0.8;
-margin-top:10px;
-
+margin-top:15px;
+opacity:.8;
+font-size:20px;
 }
 
 /* section */
 
 .section{
-
 max-width:1100px;
 margin:auto;
-padding:60px 20px;
-
+padding:80px 25px;
 }
 
-/* video grid */
+.section h2{
+font-size:34px;
+margin-bottom:30px;
+text-align:center;
+}
+
+.about-box{
+background:rgba(20,20,20,.7);
+padding:40px;
+border-radius:12px;
+line-height:1.8;
+font-size:17px;
+box-shadow:0 0 30px rgba(255,0,0,.1);
+}
+
+/* videos */
 
 .video-grid{
-
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-gap:30px;
-
+grid-template-columns:1fr 1fr;
+gap:40px;
+justify-content:center;
 }
 
-.video iframe{
+.video-card{
+background:rgba(25,25,25,.7);
+border-radius:12px;
+overflow:hidden;
+box-shadow:0 0 25px rgba(255,0,0,.15);
+transition:.3s;
+}
 
+.video-card:hover{
+transform:translateY(-5px);
+box-shadow:0 0 35px rgba(255,0,0,.35);
+}
+
+.video-card iframe{
 width:100%;
-height:200px;
+height:280px;
 border:none;
-border-radius:8px;
-box-shadow:0 0 20px rgba(255,0,0,0.3);
-
 }
 
-/* social icons */
+/* center last video */
+
+.video-card.center{
+grid-column:1 / span 2;
+max-width:600px;
+margin:auto;
+}
+
+/* social */
 
 .social{
-
 text-align:center;
-margin-top:40px;
-
+margin-top:70px;
 }
 
 .social a{
+margin:0 20px;
+display:inline-block;
+transition:.3s;
+}
 
-margin:15px;
-font-size:28px;
-color:white;
-transition:0.3s;
-
+.social img{
+width:46px;
 }
 
 .social a:hover{
-
-color:red;
-text-shadow:0 0 10px red;
-
+transform:scale(1.2);
+filter:drop-shadow(0 0 10px red);
 }
 
-/* mouse glow */
-
-.cursor{
-
-position:fixed;
-width:200px;
-height:200px;
-background:radial-gradient(circle,rgba(255,0,0,0.3),transparent 60%);
-pointer-events:none;
-transform:translate(-50%,-50%);
-mix-blend-mode:screen;
-z-index:999;
-
-}
+/* footer */
 
 footer{
-
 text-align:center;
-padding:40px;
-opacity:0.6;
+padding:50px;
+opacity:.6;
 font-size:14px;
+}
+
+/* responsive */
+
+@media(max-width:900px){
+
+.video-grid{
+grid-template-columns:1fr;
+}
+
+.video-card.center{
+grid-column:auto;
+}
+
+.hero h1{
+font-size:42px;
+}
 
 }
 
 </style>
+
 </head>
 
 <body>
 
+<div class="bg"></div>
+<div class="overlay"></div>
 <div class="cursor"></div>
 
-<!-- intro screen -->
+<!-- INTRO -->
 
 <div id="intro">
 
-<img id="dragon" src="https://github.com/redragonstudio/reddragonstudio/blob/main/Untitled%20design.png?raw=true">
+<img id="dragon" src="https://raw.githubusercontent.com/redragonstudio/reddragonstudio/main/Untitled%20design.png">
 
-<button class="enter" onclick="enterSite()">ENTER</button>
+<button class="enterBtn" onclick="enterSite()">Enter</button>
 
 </div>
 
-<!-- background music -->
+<!-- MUSIC -->
 
 <audio id="bgmusic" loop>
 
@@ -227,50 +259,58 @@ font-size:14px;
 
 </audio>
 
-<audio id="roar">
+<!-- HERO -->
 
-<source src="https://raw.githubusercontent.com/redragonstudio/reddragonstudio/main/Dragon%20Roar%20(mp3cut.net).mp3">
-
-</audio>
-
-<header>
+<section class="hero">
 
 <h1>Red Dragon Studios</h1>
 
 <p class="tagline">
-A small collaborative music project exploring covers, instrumentals, remixes and creative production.
+A small collaborative music collective exploring covers, remixes, instrumentals and creative production.
 </p>
 
-</header>
+</section>
+
+<!-- ABOUT -->
 
 <section class="section">
 
-<h2 style="margin-bottom:25px;">Featured</h2>
+<h2>About</h2>
+
+<div class="about-box">
+
+Red Dragon Studios is a small collaborative music project built around experimentation, creativity, and a shared passion for sound. What began as a simple idea between musicians gradually evolved into a creative space where different musical ideas can be explored and developed.
+
+Rather than functioning as a traditional recording studio, Red Dragon Studios operates more like a creative collective. The focus is on producing musical content such as covers, remixes, instrumentals, and experimental music production projects.
+
+Each piece is approached with the goal of re-imagining sound. Some projects focus on instrumental reinterpretations of existing music, while others explore new arrangements, textures, and production styles that give familiar songs a different character.
+
+The project is developed collaboratively, with different members contributing ideas, performances, and production work across various projects. This collaborative approach allows each piece to carry its own creative identity while still reflecting the spirit of Red Dragon Studios.
+
+Through platforms such as YouTube and Instagram, the group shares its work and creative experiments, gradually building a collection of musical projects that represent its evolving sound.
+
+</div>
+
+</section>
+
+<!-- VIDEOS -->
+
+<section class="section">
+
+<h2>Featured Work</h2>
 
 <div class="video-grid">
 
-<div class="video">
-
-<iframe class="yt"
-src="https://www.youtube.com/embed/dELunDYhduc"
-allowfullscreen></iframe>
-
+<div class="video-card">
+<iframe src="https://www.youtube.com/embed/dELunDYhduc" allowfullscreen></iframe>
 </div>
 
-<div class="video">
-
-<iframe class="yt"
-src="https://www.youtube.com/embed/TvxAO1LattI"
-allowfullscreen></iframe>
-
+<div class="video-card">
+<iframe src="https://www.youtube.com/embed/TvxAO1LattI" allowfullscreen></iframe>
 </div>
 
-<div class="video">
-
-<iframe class="yt"
-src="https://www.youtube.com/embed/5xEMmnEy3CA"
-allowfullscreen></iframe>
-
+<div class="video-card center">
+<iframe src="https://www.youtube.com/embed/5xEMmnEy3CA" allowfullscreen></iframe>
 </div>
 
 </div>
@@ -278,15 +318,11 @@ allowfullscreen></iframe>
 <div class="social">
 
 <a href="https://www.youtube.com/@RedDragonStudio-69" target="_blank">
-
-<img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" width="40">
-
+<img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png">
 </a>
 
 <a href="https://www.instagram.com/redd.ragon_studio?igsh=MmZhbXc4b3Yzbm9j" target="_blank">
-
-<img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" width="40">
-
+<img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png">
 </a>
 
 </div>
@@ -294,54 +330,31 @@ allowfullscreen></iframe>
 </section>
 
 <footer>
-
 Red Dragon Studios
-
 </footer>
 
 <script>
 
-/* intro */
-
 function enterSite(){
 
-document.getElementById("intro").style.display="none"
+let intro=document.getElementById("intro")
 
+intro.style.opacity="0"
+
+setTimeout(()=>{
+intro.style.display="none"
 document.getElementById("bgmusic").play()
-
-document.getElementById("roar").play()
+},900)
 
 }
 
-/* mouse glow */
+/* cursor glow */
 
 const cursor=document.querySelector(".cursor")
 
 document.addEventListener("mousemove",e=>{
-
 cursor.style.left=e.clientX+"px"
 cursor.style.top=e.clientY+"px"
-
-})
-
-/* auto mute when video plays */
-
-let bg=document.getElementById("bgmusic")
-
-document.querySelectorAll("iframe").forEach(frame=>{
-
-frame.addEventListener("mouseenter",()=>{
-
-bg.volume=0.1
-
-})
-
-frame.addEventListener("mouseleave",()=>{
-
-bg.volume=1
-
-})
-
 })
 
 </script>
